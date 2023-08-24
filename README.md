@@ -63,7 +63,7 @@ my_bag.extract_rgb_and_depth_frames(dir_color=color_path,dir_depth=depth_path)
 
 
 
-#### Will be adding more om extracting point cluoud as pcd files and extracting imu data in future.
+#### Will be adding more om extracting point cluoud as pcd files and extracting imu data in future
 
 
 
