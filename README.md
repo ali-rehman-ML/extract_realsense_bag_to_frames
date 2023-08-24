@@ -17,8 +17,8 @@ pip install pyrealsense2 numpy opencv-python
 ## Installation
 
 ```bash
-git clone https://github.com/yourusername/project-name.git
-cd project-name
+git clone https://github.com/ali-rehman-ML/extract_realsense_bag_to_frames.git
+cd extract_realsense_bag_to_frames
 ```
 
 ## Method
