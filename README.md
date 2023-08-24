@@ -24,8 +24,8 @@ cd project-name
 ## Method
 
 ```python
-Import extract_realsense
-my_bag=Extract_Bag(Bag_path=’/path/to/bag_file’, fps=,extracting_frame_rate=)
+import extract_realsense as exb
+my_bag=exb.Extract_Bag(Bag_path=’/path/to/bag_file’, fps=,extracting_frame_rate=)
 ```
 #### Use bag_path=r’/path/to/bag_file’ when you have absolute path to convert it into raw string
 #### Give fps of recorded bag , for fast and accurate extracting
@@ -36,7 +36,7 @@ my_bag=Extract_Bag(Bag_path=’/path/to/bag_file’, fps=,extracting_frame_rate=
 ### 1-Extract color_frames:
 ```python
 
-exb.extract_rgb_frames(dir=’/path/to/directory/tosave/extracted_frames’)
+my_bag.extract_rgb_frames(dir=’/path/to/directory/tosave/extracted_frames’)
 ```
 
 #### If dir_path not providence it create a new directory in current directory named color
@@ -45,7 +45,7 @@ exb.extract_rgb_frames(dir=’/path/to/directory/tosave/extracted_frames’)
 
 ### 2-Extract depth Frames
 ```python
-exb.extract_depth_frames(dir=’/path/to/directory/tosave/extracted_frames’)
+my_bag.extract_depth_frames(dir=’/path/to/directory/tosave/extracted_frames’)
 ```
 #### If dir_path not provided it create a new directory in current directory named depth
 
@@ -56,7 +56,7 @@ exb.extract_depth_frames(dir=’/path/to/directory/tosave/extracted_frames’)
 ```python
 color_path=’/path/to/directory/to_save_color_frames’
 depth_path=’/path/to/directory/to_save_depth_frames’
-exb.extract_rgb_and_depth_frames(dir_color=color_path,dir_depth=depth_path)
+my_bag.extract_rgb_and_depth_frames(dir_color=color_path,dir_depth=depth_path)
 ```
 
 #### If dir_path not provided it create a new directories in current directory named depth and color 
