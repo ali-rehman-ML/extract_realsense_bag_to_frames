@@ -25,12 +25,12 @@ class Extract_Bag:
             stream = rs.stream.color 
             self.config.disable_all_streams()
             self.config.enable_stream(stream)
-            config.enable_device_from_file(self.bag_path, repeat_playback=False)
-            if not config.can_resolve(pipeline):
+            self.config.enable_device_from_file(self.bag_path, repeat_playback=False)
+            if not self.config.can_resolve(self.pipeline):
                 print("Requested configuration cannot be resolved.")
                 exit()
 
-            profile = self.pipeline.start(config)
+            profile = self.pipeline.start(self.config)
             playback = profile.get_device().as_playback()
 
             playback.resume()
@@ -39,7 +39,7 @@ class Extract_Bag:
 
                 while True:  
 
-                    frames = pipeline.wait_for_frames()
+                    frames = self.pipeline.wait_for_frames()
 
                     if frames.size() == 0:
                         break
@@ -79,6 +79,7 @@ class Extract_Bag:
         device = self.pipeline.get_active_profile().get_device()
         playback = device.as_playback()
         duration = playback.get_duration()
+        print(duration.total_seconds())
         max_frames=self.fps*float(duration.total_seconds())
         index=0
         k=0
@@ -90,7 +91,10 @@ class Extract_Bag:
         # print("rate ", extraced_frame_rate )s
         playback.resume()
         try:
-            while playback.current_status() == rs.playback_status.playing:
+            # while playback.current_status() == rs.playback_status.playing:
+            while index<self.extracting_frame_rate*(duration.total_seconds()):
+                frames = self.pipeline.wait_for_frames()
+
 
 
                 # print(index,index%extraced_frame_rate )
